@@ -6,7 +6,7 @@ topics: ["webpack", "GitHub", "Git", "初心者"]
 published: true
 ---
 
-環境構築して、GitHub に上げた際に「なんか重いな」と思ったら、node_modules を普通にアップしてました。。。やっちまった。。。
+環境構築して GitHub に上げた際に「なんか重いな」と思ったら、node_modules を普通にアップしちゃってました。。。やっちまった。。。
 
 なので、GitHub にアップしてしまった node_modules を削除する方法を備忘として残しておきます。
 
