@@ -39,7 +39,23 @@ const nonDraftPosts = allPosts.filter((post) => !post.frontmatter.draft);
 
 ## 2. 日付順にソートする
 
-次に、記事を日付順にソートします。以下のように、sort()メソッドを使用して、pubDate の値に基づいて記事を並び替えます。
+次に、記事を日付順にソートします。  
+以下のように、sort()メソッドを使用して、pubDate の値に基づいて記事を並び替えます。
+
+```jsx
+const sortedPosts = nonDraftPosts.sort((a, b) => {
+  const aDate = new Date(a.frontmatter.pubDate);
+  const bDate = new Date(b.frontmatter.pubDate);
+  return bDate - aDate;
+});
+```
+
+ただ、このコードでは「算術演算の右辺には、'any' 型、'number' 型、'bigint' 型、または列挙型を指定する必要があります。」とエラーが出てしまいます。
+
+このエラーは、比較する値の型が不明確なために発生しているようです。  
+具体的には、a.frontmatter.pubDate と b.frontmatter.pubDate の値が文字列型であるため、比較演算子 < および > を使用することができません。
+
+この問題を解決するために、以下のように new Date()を使用して、文字列を日付オブジェクトに変換し、その後に比較を行うことができます。
 
 ```jsx
 const sortedPosts = nonDraftPosts.sort((a, b) => {
